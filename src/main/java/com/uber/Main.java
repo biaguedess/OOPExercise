@@ -1,6 +1,5 @@
 package com.uber;
 
-import com.uber.object.Account;
 import com.uber.object.Checking;
 import com.uber.object.Savings;
 
@@ -10,7 +9,7 @@ import java.util.Scanner;
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
 
-    public static Integer operacoes(){
+    public static Integer operations(){
         Scanner opt = new Scanner(System.in);
         System.out.println("Type the desired option: \n" +
                 "1 - Create account \n" +
@@ -35,20 +34,19 @@ public class Main {
         Checking accountC = new Checking("","","","", "");
         Savings accountS = new Savings("","","","", "");
 
-        Integer op = operacoes();
-        System.out.println("opcao " + op + "\n");
+        Integer option = operations();
 
-        while (op != 5){
+        while (option != 5){
 
-            if (op ==1){
+            if (option ==1){
                 //Create account
                 System.out.println("What type of account do you want to create? (C for checking or S for saving)");
                 String type = s.nextLine();
 
                 if  (type.equals("C") && accountC.getDate() != null){
-                    System.out.println("You already have a checking account with ID " + accountC.accountID + "\n");
+                    System.out.println("You already have a checking account with ID " + accountC.getAccountID() + "\n");
                 } else if  (type.equals("S") && accountS.getDate() != null){
-                    System.out.println("You already have a saving account with ID " + accountS.accountID + "\n");
+                    System.out.println("You already have a saving account with ID " + accountS.getAccountID() + "\n");
                 } else {
 
                     System.out.println("Enter your name");
@@ -64,14 +62,14 @@ public class Main {
 
                     if  (type.equals("C")){
                         accountC.createAccount(name, id, eMail, phone, address);
-                        System.out.println("Checking account created: " + accountC.accountID + "\n");
+                        System.out.println("Checking account created: " + accountC.getAccountID() + "\n");
                     } else {
                         accountS.createAccount(name, id, eMail, phone, address);
-                        System.out.println("Checking account created: " + accountS.accountID + "\n");
+                        System.out.println("Checking account created: " + accountS.getAccountID() + "\n");
                     }
                 }
 
-            } else if (op == 2){
+            } else if (option == 2){
                 //Get account balance
                 System.out.println("Enter your account ID");
                 accountID = Integer.valueOf(s.nextLine());
@@ -82,7 +80,7 @@ public class Main {
                 } else {
                     System.out.println("Account doesn't exist\n");
                 }
-            } else if (op == 3){
+            } else if (option == 3){
                 // Make a deposit
                 System.out.println("Op 3\n");
                 System.out.println("Enter your account ID");
@@ -100,7 +98,7 @@ public class Main {
                     System.out.println("Account doesn't exist\n");
                 }
 
-            } else if (op == 4){
+            } else if (option == 4){
                 // Make a withdraw
                 System.out.println("Op 4\n");
                 System.out.println("Enter your account ID");
@@ -118,7 +116,7 @@ public class Main {
                 }
             }
             promptEnterKey();
-            op = operacoes();
+            option = operations();
 
         }
     }
